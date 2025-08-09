@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 
 import net.coreprotect.language.Phrase;
@@ -16,7 +17,8 @@ public class ChatUtils {
         throw new IllegalStateException("Utility class");
     }
 
-    public static String getCoordinates(String command, int worldId, int x, int y, int z, boolean displayWorld, boolean italic) {
+    public static String getCoordinates(CommandSender sender, String command, int worldId, int x, int y, int z, boolean displayWorld, boolean italic) {
+        if (!sender.hasPermission("coreprotect.coordinates")) return "";
         StringBuilder message = new StringBuilder(Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND);
 
         StringBuilder worldDisplay = new StringBuilder();
