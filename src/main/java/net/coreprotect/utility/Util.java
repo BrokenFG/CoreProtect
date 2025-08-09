@@ -37,6 +37,7 @@ import org.bukkit.block.ShulkerBox;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Waterlogged;
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
@@ -142,7 +143,8 @@ public class Util extends Queue {
         return getBlockId(material.name(), true);
     }
 
-    public static String getCoordinates(String command, int worldId, int x, int y, int z, boolean displayWorld, boolean italic) {
+    public static String getCoordinates(CommandSender sender, String command, int worldId, int x, int y, int z, boolean displayWorld, boolean italic) {
+        if (!sender.hasPermission("coreprotect.coordinates")) return "";
         StringBuilder message = new StringBuilder(Chat.COMPONENT_TAG_OPEN + Chat.COMPONENT_COMMAND);
 
         StringBuilder worldDisplay = new StringBuilder();

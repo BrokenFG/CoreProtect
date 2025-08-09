@@ -24,7 +24,6 @@ import org.bukkit.entity.Player;
 import net.coreprotect.bukkit.BukkitAdapter;
 import net.coreprotect.config.Config;
 import net.coreprotect.config.ConfigHandler;
-import net.coreprotect.extensions.Extensions;
 import net.coreprotect.language.Phrase;
 import net.coreprotect.language.Selector;
 import net.coreprotect.model.BlockGroup;
@@ -1281,7 +1280,6 @@ public class CommandHandler implements CommandExecutor {
                     else {
                         try {
                             Class.forName("net.coreprotect.extensions.DatabaseMigration");
-                            Extensions.runDatabaseMigration(user, argumentArray);
                         }
                         catch (Exception e) {
                             // plugin not compiled with extension
